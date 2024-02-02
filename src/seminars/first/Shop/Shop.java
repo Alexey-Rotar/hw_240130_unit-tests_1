@@ -25,7 +25,7 @@ public class Shop {
     }
 
     /**
-     * Метод поиска самого дорого продукта
+     * Метод поиска самого дорогого продукта
      * @return самый дорогой продукт
      */
     public Product getMostExpensiveProduct() {

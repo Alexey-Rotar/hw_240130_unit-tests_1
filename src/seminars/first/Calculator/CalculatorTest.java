@@ -53,7 +53,7 @@ public class CalculatorTest {
         //System.out.println(Calculator.calculation(2_147_483_647, 1, '+')); // integer overflow
         //System.out.println(Calculator.squareRootExtraction(169));
 
-        System.out.println(Calculator.calculatingDiscount(1, 10));
+        //System.out.println(Calculator.calculatingDiscount(1, 10));
 
         // Примерные решения домашних заданий из 1 лекции:
 
@@ -75,5 +75,26 @@ public class CalculatorTest {
         // }
         //   assert 0 == seminars.first.Calculator.Calculator.calculation(2, 6, '+');
         //    assertThat(seminars.first.Calculator.Calculator.calculation(2, 6, '+')).isEqualTo(0);
+
+        // Проверка на корректность вычислений
+        assertThat(Calculator.calculatingDiscount(100,20)).isEqualTo(80);
+        assertThat(Calculator.calculatingDiscount(100,0)).isEqualTo(100);
+
+        // Проверки на выбрасывание исключений при передаче некорректных аргументов
+        assertThatThrownBy(() ->
+                Calculator.calculatingDiscount(0, 10))
+                .isInstanceOf(ArithmeticException.class);
+        assertThatThrownBy(() ->
+                Calculator.calculatingDiscount(-50, 10))
+                .isInstanceOf(ArithmeticException.class);
+        assertThatThrownBy(() ->
+                Calculator.calculatingDiscount(40, -20))
+                .isInstanceOf(ArithmeticException.class);
+        assertThatThrownBy(() ->
+                Calculator.calculatingDiscount(40, 100))
+                .isInstanceOf(ArithmeticException.class);
+        assertThatThrownBy(() ->
+                Calculator.calculatingDiscount(40, 120))
+                .isInstanceOf(ArithmeticException.class);
     }
 }
