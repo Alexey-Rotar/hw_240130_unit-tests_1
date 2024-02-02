@@ -15,16 +15,25 @@ public class Shop {
         this.products = products;
     }
 
-    // Метод должен вернуть отсортированный по возрастанию по цене список продуктов
+    /**
+     * Метод сортировки по возрастанию по цене списка продуктов
+     * @return отсортированный список продуктов
+     */
     public List<Product> sortProductsByPrice() {
-        // Допишите реализацию метода самостоятельно
-        return null;
+        products.sort(Comparator.comparing(Product::getCost));
+        return products;
     }
 
-    // Метод должен вернуть самый дорогой продукт
+    /**
+     * Метод поиска самого дорого продукта
+     * @return самый дорогой продукт
+     */
     public Product getMostExpensiveProduct() {
-        // Допишите реализацию метода самостоятельно
-        return null;
+        return products.stream()
+                .max((p1, p2)->{
+                    return Integer.compare(p1.getCost(), p2.getCost());
+                })
+                .get();
     }
 
 }

@@ -45,15 +45,13 @@ public class Calculator {
 
     /**
      *
-     * @param purchaseAmount начальная сумма (>0)
-     * @param discountAmount скидка в %, целое число [0...100)
-     * @return
+     * @param purchaseAmount сумма покупки начальная (>0)
+     * @param discountAmount размер скидки, %, целое число [0...100)
+     * @return сумма покупки со скидкой
      */
-    public static double calculatingDiscount(double purchaseAmount, int discountAmount) {
-        // purchaseAmount - сумма покупки
-        // discountAmount - размер скидки
+    public static double calculatingDiscount(double purchaseAmount, int discountAmount) throws ArithmeticException {
         if (purchaseAmount <= 0 || discountAmount < 0 || discountAmount >= 100)
-            throw new ArithmeticException("Недопустимые значения!");
-        return purchaseAmount - purchaseAmount * discountAmount / 100; // Метод должен возвращать сумму покупки со скидкой
+            throw new ArithmeticException("Invalid value!");
+        return purchaseAmount - purchaseAmount * discountAmount / 100;
     }
 }
